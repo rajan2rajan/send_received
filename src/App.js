@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
+
+const getProvier =  () => {
+  if ("solana" in window) {
+    const provider = window.solana;
+    if (provider.isPhantom) {
+      console.log("Connected!! to Phantom Wallet")
+      return provider.connect();} 
+
+    }else{
+      window.open("https://chrome.google.com/webstore/detail/phantom/bfnaelmomeimhlpmgjnjophhpkkoljpa?hl=en","blank");
+      }
+      
+}; 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     
+         <label>send</label>
+        <button type = "submit" value="send">send</button><br></br>
+
+        <label >connect_wallet</label>
+        <button value="connect_wallet" onClick={getProvier}> submit</button>
+      
     </div>
+
   );
 }
 
